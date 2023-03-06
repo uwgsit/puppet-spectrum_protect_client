@@ -7,6 +7,8 @@ describe 'spectrum_protect_client' do
     context "on #{os}" do
       let(:facts) { os_facts }
 
+      it { is_expected.to contain_package('TIVsm-BA') }
+
       it { is_expected.to compile.with_all_deps }
     end
   end
