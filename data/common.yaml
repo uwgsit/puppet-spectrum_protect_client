@@ -1,1 +1,5 @@
---- {}
+---
+spectrum_protect_client::packages:
+  'TivSM-BA': {}
+  'TIVsm-API64': {}
+spectrum_protect_client::default_package_action: 'latest'
