@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+ENV['MODULEPATH'] = ''
+
 RSpec.configure do |c|
   c.mock_with :rspec
 end
