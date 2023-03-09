@@ -8,6 +8,7 @@
 # @param default_package_action [String] Default value of ensure if not specified for a package
 class spectrum_protect_client (
   Hash[String,Hash] $packages,
+  String $version,
   Enum['latest','installed','absent'] $default_package_action,
 ) {
   $packages.each | $package,$params | {
