@@ -21,6 +21,12 @@ describe 'spectrum_protect_client' do
       it { is_expected.to contain_yum__versionlock("0:TIVsm-BA-#{version}") }
       it { is_expected.to contain_yum__versionlock("0:TIVsm-API64-#{version}") }
 
+      it { is_expected.to contain_file('/opt/tivoli/tsm/client/ba/bin/dsm.opt').with({
+        'ensure' => 'file',
+        'content' => '*This is a junk filler file to make dsmc happy when doing restores',
+        'require' => 'Package[TIVsm-BA]',
+      }) }
+
     end
   end
 end
