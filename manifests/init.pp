@@ -17,7 +17,7 @@ class spectrum_protect_client (
     # Upgrading BA packages should only be done when needed
     yum::versionlock { "0:${package}-${version}":
       ensure => present,
-    } -> package { $package:
+    } -> package { $package_name:
       * => $package_params,
     }
     $package_requires + Package[$package_name]
