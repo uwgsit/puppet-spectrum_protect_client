@@ -22,4 +22,13 @@ class spectrum_protect_client (
     }
     $package_requires + Package[$package_name]
   }
+
+  $dsmsys_path = '/opt/tivoli/tsm/client/ba/bin/dsm.sys'
+  $dsmopt_basepath = '/opt/tivoli/tsm/client/ba/bin/dsm.opt'
+
+  file { $dsmopt_basepath:
+    ensure  => file,
+    content => '*This is a junk filler file to make dsmc happy when doing restores',
+    require => Package['TIVsm-BA'],
+  }
 }
