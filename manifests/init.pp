@@ -13,7 +13,10 @@ class spectrum_protect_client (
 ) {
   $packages.each | $package,$params | {
     $_params = { 'ensure' => $default_package_action } + $params
-    package { $package:
+    # Upgrading BA packages should only be done when needed
+    yum::versionlock { "0:${package}-${version}":
+      ensure => present,
+    } -> package { $package:
       * => $_params,
     }
   }
